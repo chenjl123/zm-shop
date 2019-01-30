@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: service-msg
+  cloud:
+    config:
+      name: service-msg
+      profile: dev
+      uri: http://localhost:8603/          #读取配置中心
+

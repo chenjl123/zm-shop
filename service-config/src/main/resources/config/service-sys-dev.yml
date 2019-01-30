@@ -1,0 +1,50 @@
+server:
+  port: 8613
+  host: 127.0.0.1
+
+feign:
+  hystrix:
+    enabled: true
+    
+spring:
+  http: 
+    encoding: 
+      force: true
+      charset: UTF-8
+      enabled: true
+  rabbitmq:    #rabbitmq配置
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    template:
+      retry: true  #设置为true的时候RabbitTemplate能够实现重试,默认false,
+      max-attempts: 2  #重试次数，默认3次
+    publisher-confirms: true  #开启Publisher Confirm机制 ,默认false
+    publisher-returns: true   #开启publisher Return机制，默认false
+    template.mandatory: true  #启用强制信息,默认false
+    cache:
+      channel:
+        size: 50 # 缓存的channel数量
+
+### 自定义配置
+mq:
+  defaultExchange: emailExchange # 默认交换器
+  queue: emailQueue # 队列名
+  routeKey: emailQueueKey # 路由key
+
+eureka:
+  instance:
+    non-secure-port: ${server.port:8613}
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}(${spring.cloud.client.ipAddress}):${server.port}
+  client:
+    service-url:
+      defaultZone: http://zm:zm123@127.0.0.1:8600/eureka/ 
+      
+      
+pro:
+  path: dev-path
+         
+      

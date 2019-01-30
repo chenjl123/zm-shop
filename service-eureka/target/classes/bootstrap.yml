@@ -1,0 +1,24 @@
+security:
+  basic:
+    enabled: true
+  user:
+    name: zm
+    password: zm123
+
+spring:
+  application:
+    name: service.eureka
+
+eureka:
+  datacenter: cloud
+  environment: product
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}(${spring.cloud.client.ipAddress}):${server.port}
+    metadata-map:
+      instance-id: ${spring.application.name}:${server.port}
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://zm:zm123@${server.host}:${server.port}/eureka/

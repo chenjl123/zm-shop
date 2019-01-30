@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zm.order.dao.LogMapper">
+
+  <!-- 插入业务日志 -->
+  <insert id="add" parameterType="Log">
+  	  insert into t_log(id, op_from, op_type, op_time, op_user) values (#{id}, #{op_from}, #{op_type}, #{op_time}, #{op_user})
+  </insert>
+</mapper>
+

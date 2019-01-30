@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: service-cache
+  cloud:
+    config:
+      profile: test
+      uri: http://localhost:8603/           #读取配置中心      
+

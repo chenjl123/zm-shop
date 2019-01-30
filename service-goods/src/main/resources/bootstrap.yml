@@ -1,0 +1,25 @@
+server:
+  port: 8612
+  host: 127.0.0.1
+
+feign:
+  hystrix:
+    enabled: true
+    
+spring:
+  http: 
+    encoding: 
+      force: true
+      charset: UTF-8
+      enabled: true
+  application:
+    name: service-goods
+      
+eureka:
+  instance:
+    non-secure-port: ${server.port:8012}
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}(${spring.cloud.client.ipAddress}):${server.port}
+  client:
+    service-url:
+      defaultZone: http://zm:zm123@127.0.0.1:8600/eureka/

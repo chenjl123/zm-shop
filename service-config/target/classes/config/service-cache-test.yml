@@ -1,0 +1,25 @@
+spring:
+  redis:
+    cluster:
+      nodes: 172.16.39.6:7000,172.16.39.6:7001,172.16.39.6:7002
+  http: 
+    encoding: 
+      force: true
+      charset: UTF-8
+      enabled: true
+      
+server:
+  port: 8614
+  host: 127.0.0.1
+  
+eureka:
+  instance:
+    non-secure-port: ${server.port:8614}
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}(${spring.cloud.client.ipAddress}):${server.port}
+  client:
+    service-url:
+      defaultZone: http://zm:zm123@127.0.0.1:8600/eureka/
+
+pro:
+  path: test-path
